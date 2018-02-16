@@ -14,6 +14,7 @@ Joueur::~Joueur()
 }
 void Joueur::Sauvegarder(Joueur player)
 {
+    //On enregistre les jetons et le nom du joueur
     fstream save;
     save.open("Joueur.txt", fstream::in | fstream::out |fstream::app);
     save<<player.aliasJoueur;
@@ -22,6 +23,7 @@ void Joueur::Sauvegarder(Joueur player)
 }
 bool Joueur::Rejouer()
 {
+    //On reboucle
     return joueurJoue=true;
 }
 //void Joueur::Charger(Joueur player)
@@ -33,5 +35,6 @@ bool Joueur::Rejouer()
 //}
 bool Joueur::Quitter()
 {
+    //On ferme le programme, parce qu'on perd trop.
     return joueurJoue=false;
 }

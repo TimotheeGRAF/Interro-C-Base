@@ -15,7 +15,6 @@ int main()
     string nomJoueur;
     fstream saveJoueur;
     vector<Jeu> listJeux;  //Conteneur des jeux
-    string caracJoueur;
     srand(time(NULL));
 
 //On créé les types de jeu
@@ -43,23 +42,24 @@ int main()
     while(nouveauJoueur.joueurJoue!=false)
     {
 //On demande et stocke le type de jeu
-    cout<<"A quel jeu souhaitez vous jouer ?\n Roulette : 1 , Craps : 2 , Black Jack : 3 \n"<<endl;
-    cin>>Casinoob.typeJeu;
+        cout<<"A quel jeu souhaitez vous jouer ?\n Roulette : 1 , Craps : 2 , Black Jack : 3 \n"<<endl;
+        cin>>Casinoob.typeJeu;
 //On envoie la méthode de jeu en fonction du type choisi
-
         switch(Casinoob.typeJeu)
         {
 
         case 1:
-            cout<<"Veuillez placer une mise :"<<endl;
+            cout<<"Veuillez placer une mise :"<<endl;   //On place une mise
             cin>>nouveauJoueur.mise;
-            nouveauJoueur.jetons=nouveauJoueur.jetons-nouveauJoueur.mise;
+            nouveauJoueur.jetons=nouveauJoueur.jetons-nouveauJoueur.mise; //On déduit du total de jetons
 
-            roulette.resultat=rand()%10;
+            roulette.resultat=rand()%10;    //On effectue le "jeu"
+            //Condition de victoire
             if(roulette.resultat>3)
             {
                 nouveauJoueur.jetons=nouveauJoueur.jetons+nouveauJoueur.mise*2;
                 cout<<"Vous avez gagne a la Roulette ! Felicitations ! Vous avez "<<nouveauJoueur.jetons<<" jetons.\n "<<endl;
+                //On gagne, puis on demande ce que le joueur veut faire
                 cout<<"Voulez vous Rejouer = 1 \n Sauvegarder = 2 \n Charger = 3 \n Quitter = 4"<<endl;
                 cin>>roulette.finPartie;
                 switch(roulette.finPartie)
@@ -80,9 +80,11 @@ int main()
                 }
                 break;
             }
+            //Défaite
             else
             {
                 cout<<"Vous avez perdu votre mise, il vous reste "<<nouveauJoueur.jetons<<" jetons !"<<endl;
+                //On perds, mais on demande ce que le joueur veut faire
                 cout<<"Voulez vous Rejouer = 1 \n Sauvegarder = 2 \n Charger = 3 \n Quitter = 4"<<endl;
                 cin>>roulette.finPartie;
                 switch(roulette.finPartie)
@@ -104,7 +106,7 @@ int main()
                 break;
             }
         case 2:
-            cout<<"Veuillez placer une mise :"<<endl;
+            cout<<"Veuillez placer une mise :"<<endl;//On place une mise
             cin>>nouveauJoueur.mise;
             nouveauJoueur.jetons=nouveauJoueur.jetons-nouveauJoueur.mise;
 
@@ -114,6 +116,7 @@ int main()
             {
                 nouveauJoueur.jetons=nouveauJoueur.jetons+nouveauJoueur.mise*2;
                 cout<<"Vous avez gagne au Craps ! Felicitations ! Vous avez "<<nouveauJoueur.jetons<<" jetons.\n "<<endl;
+                //On gagne, puis on demande ce que le joueur veut faire
                 cout<<"Voulez vous Rejouer = 1 \n Sauvegarder = 2 \n Charger = 3 \n Quitter = 4"<<endl;
                 cin>>craps.finPartie;
                 switch(craps.finPartie)
@@ -137,6 +140,7 @@ int main()
             else
             {
                 cout<<"Vous avez perdu votre mise, il vous reste "<<nouveauJoueur.jetons<<" jetons !"<<endl;
+                //On perds, mais on demande ce que le joueur veut faire
                 cout<<"Voulez vous Rejouer = 1 \n Sauvegarder = 2 \n Charger = 3 \n Quitter = 4"<<endl;
                 cin>>craps.finPartie;
                 switch(craps.finPartie)
@@ -158,9 +162,9 @@ int main()
                 break;
             }
         case 3:
-            cout<<"Veuillez placer une mise :"<<endl;
+            cout<<"Veuillez placer une mise :"<<endl;//On place une mise
             cin>>nouveauJoueur.mise;
-            nouveauJoueur.jetons=nouveauJoueur.jetons-nouveauJoueur.mise;
+            nouveauJoueur.jetons=nouveauJoueur.jetons-nouveauJoueur.mise;   //On déduit la mise du nombre de jetons totaux.
 
             blackJack.resultat=rand()%5;
 
@@ -168,6 +172,7 @@ int main()
             {
                 nouveauJoueur.jetons=nouveauJoueur.jetons+nouveauJoueur.mise*2;
                 cout<<"Vous avez gagne au Black Jack ! Felicitations ! Vous avez "<<nouveauJoueur.jetons<<" jetons.\n "<<endl;
+                //On gagne, puis on demande ce que le joueur veut faire
                 cout<<"Voulez vous Rejouer = 1 \n Sauvegarder = 2 \n Charger = 3 \n Quitter = 4"<<endl;
                 cin>>blackJack.finPartie;
                 switch(blackJack.finPartie)
@@ -191,6 +196,7 @@ int main()
             else
             {
                 cout<<"Vous avez perdu votre mise, il vous reste "<<nouveauJoueur.jetons<<" jetons !"<<endl;
+                //On perds, mais on demande ce que le joueur veut faire
                 cout<<"Voulez vous Rejouer = 1 \n Sauvegarder = 2 \n Charger = 3 \n Quitter = 4"<<endl;
                 cin>>blackJack.finPartie;
                 switch(blackJack.finPartie)

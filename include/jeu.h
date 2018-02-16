@@ -11,6 +11,8 @@ class Jeu
         int resultat;
         int finPartie;
 
+
+
     protected:
 
     private:
